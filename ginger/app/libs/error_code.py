@@ -10,6 +10,10 @@ class Success(APIException):
     error_code = 0
 
 
+class DeleteSuccess(Success):
+    code = 204
+
+
 class ServerError(APIException):
     code = 500
     msg = 'sorry, we make a mistake'

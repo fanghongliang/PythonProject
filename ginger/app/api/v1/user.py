@@ -3,12 +3,14 @@ Created by Fanghl on 2020/9/10 13:37
 """
 from flask import Blueprint, jsonify
 
+from app.libs.error_code import DeleteSuccess
 from app.libs.redprint import Redprint
 from app.libs.token_auth import auth
 
 
 # user = Blueprint('user', __name__)
 from app.models.user import User
+from app.models.base import db
 
 api = Redprint('user')
 
@@ -20,6 +22,10 @@ def get_user(uid):
     return jsonify(user)
 
 
-@api.route('/get_user', methods=['GET'])
-def user():
-    return 'i am fanghl'
+@api.route('/<int:uid>', methods=['DELETE'])
+# @auth.login_required
+def delete_user(uid):
+    with db.auto_commit():
+        user = User.query.filter_by(id=uid).first_or_404()
+        user.delete()
+    return DeleteSuccess()
