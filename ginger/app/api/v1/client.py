@@ -19,8 +19,7 @@ def create_client():
     # 参数 校验 接收参数
     # WTForms 验证表单
     # request.args.to_dict()
-    data = request.json
-    form = ClientForm(data=data)
+    form = ClientForm()
     form.validate_for_api()
     promise = {
         ClientTypeEnum.USER_EMAIL: __register_user_by_email
@@ -30,8 +29,8 @@ def create_client():
 
 
 def __register_user_by_email():
-    form = UserEmailForm(data=request.json)
-    if form.validate():
-        User.register_by_email(form.nickname.data,
-                               form.account.data,
-                               form.secret.data)
+    form = UserEmailForm()
+    form.validate_for_api()
+    User.register_by_email(form.nickname.data,
+                           form.account.data,
+                           form.secret.data)

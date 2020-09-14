@@ -1,14 +1,15 @@
 """
 Created by Fanghl on 2020/9/14 10:38
 """
-
+from flask import request
 from wtforms import Form
 
 from app.libs.error_code import ParameterException
 
 
 class BaseForm(Form):
-    def __init__(self, data):
+    def __init__(self):
+        data = request.json
         super(BaseForm, self).__init__(data=data)
 
     def validate_for_api(self):
