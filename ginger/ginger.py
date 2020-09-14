@@ -29,7 +29,7 @@ def framework_error(e):
         if not app.config['DEBUG']:
             return ServerError()
         else:
-            return e
+            raise e
 
 
 if __name__ == '__main__':
