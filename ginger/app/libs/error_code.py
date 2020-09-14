@@ -27,3 +27,15 @@ class ParameterException(APIException):
     code = 400
     msg = 'invalid param'
     error_code = 1000
+
+
+class NotFound(APIException):
+    code = 404
+    msg = 'the resource are not found'
+    error_code = 1001
+
+
+class AuthFailed(APIException):
+    code = 401
+    error_code = 1005
+    msg = 'authorization fail'
