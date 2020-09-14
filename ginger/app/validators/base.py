@@ -17,3 +17,4 @@ class BaseForm(Form):
         if not valid:
             # 调用validate存贮错误信息位置 form errors
             raise ParameterException(msg=self.errors)
+        return self
