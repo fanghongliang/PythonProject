@@ -1,7 +1,7 @@
 """
 Created by Fanghl on 2020/9/10 13:37
 """
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, g
 
 from app.libs.error_code import DeleteSuccess
 from app.libs.redprint import Redprint
@@ -22,9 +22,10 @@ def get_user(uid):
     return jsonify(user)
 
 
-@api.route('/<int:uid>', methods=['DELETE'])
-# @auth.login_required
-def delete_user(uid):
+@api.route('', methods=['DELETE'])
+@auth.login_required
+def delete_user():
+    uid = g.user.uid
     with db.auto_commit():
         user = User.query.filter_by(id=uid).first_or_404()
         user.delete()
