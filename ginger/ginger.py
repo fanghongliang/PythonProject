@@ -3,7 +3,7 @@ Created by Fanghl on 2020/9/10 11:51
 """
 from werkzeug.exceptions import HTTPException
 
-from app.app import create_app
+from app import create_app
 from app.libs.error import APIException
 from app.libs.error_code import ServerError
 
