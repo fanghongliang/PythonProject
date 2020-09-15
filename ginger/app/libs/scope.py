@@ -4,10 +4,14 @@ Created by Fanghl on 2020/9/15 16:31
 
 
 class Scope:
+    allow_api = []
+
     def __add__(self, other):
         # 管理员合并普通用户权限
-        self.allow_api = self.allow_api + other.allow_api
         # 运算符重载
+        self.allow_api = self.allow_api + other.allow_api
+        # set 去重
+        self.allow_api = list(set(self.allow_api))
         return self
 
 
