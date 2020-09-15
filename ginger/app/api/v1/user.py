@@ -25,6 +25,9 @@ def get_user(uid):
 @api.route('', methods=['DELETE'])
 @auth.login_required
 def delete_user():
+    # 超权禁止
+    # g -> 线程隔离
+    # namedtuple
     uid = g.user.uid
     with db.auto_commit():
         user = User.query.filter_by(id=uid).first_or_404()
