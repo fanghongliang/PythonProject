@@ -13,7 +13,7 @@ from app.validators.forms import ClientForm, UserEmailForm
 api = Redprint('client')
 
 
-@api.route('/register', methods=['POST'])
+@api.route('', methods=['POST'])
 def create_client():
     # 注册 登录
     # 参数 校验 接收参数

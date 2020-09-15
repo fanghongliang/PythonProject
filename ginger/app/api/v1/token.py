@@ -26,8 +26,7 @@ def get_token():
     expiration = current_app.config['TOKEN_EXPIRATION']
     token = generate_auth_token(identity['uid'],
                                 form.type.data,
-                                # identity['scope'],
-                                None,
+                                identity['scope'],
                                 expiration)
     t = {
         'token': token.decode('ascii')
@@ -42,4 +41,5 @@ def generate_auth_token(uid, ac_type, scope=None, expiration=7200):
     return s.dumps({
         'uid': uid,
         'type': ac_type.value,
+        'scope': scope
     })
