@@ -11,7 +11,8 @@ class Success(APIException):
 
 
 class DeleteSuccess(Success):
-    code = 204
+    code = 202
+    error_code = -1
 
 
 class ServerError(APIException):

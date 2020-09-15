@@ -32,5 +32,6 @@ def verify_auth_token(token):
     except SignatureExpired:
         raise AuthFailed(msg='token is expired', error_code=1003)
     uid = data['uid']
-    ac_type = data['ac_type']
+    ac_type = data['type']
+    # print('验证token参数--', uid, ac_type)
     return User(uid, ac_type, '')
