@@ -3,24 +3,30 @@ Created by Fanghl on 2020/9/15 16:31
 """
 
 
-class UserScope:
-    allow_api = ['v1.get_user']
-
-
-class AdminScope:
-    allow_api = ['v1.super_get_user']
-
-    def __init__(self):
-        self.add(UserScope()).add(SuperScope())
-
-    def add(self, other):
+class Scope:
+    def __add__(self, other):
         # 管理员合并普通用户权限
         self.allow_api = self.allow_api + other.allow_api
+        # 运算符重载
         return self
 
 
-class SuperScope:
+class UserScope(Scope):
+    allow_api = ['v1.get_user']
+
+
+class AdminScope(Scope):
+    allow_api = ['v1.super_get_user']
+
+    def __init__(self):
+        self + UserScope()
+
+
+class SuperScope(Scope):
     allow_api = []
+
+    def __init__(self):
+        self + UserScope() + AdminScope()
 
 
 def is_in_scope(scope, endpoint):
