@@ -11,11 +11,16 @@ class AdminScope:
     allow_api = ['v1.super_get_user']
 
     def __init__(self):
-        self.add(UserScope())
+        self.add(UserScope()).add(SuperScope())
 
     def add(self, other):
         # 管理员合并普通用户权限
         self.allow_api = self.allow_api + other.allow_api
+        return self
+
+
+class SuperScope:
+    allow_api = []
 
 
 def is_in_scope(scope, endpoint):
