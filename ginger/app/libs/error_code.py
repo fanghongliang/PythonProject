@@ -50,3 +50,9 @@ class Forbidden(APIException):
     code = 403
     error_code = 1004
     msg = 'forbidden, not in scope'
+
+
+class DuplicateGift(APIException):
+    code = 404
+    error_code = 1007
+    msg = 'gift already exits'
