@@ -14,6 +14,8 @@ flask-httpauth = "==2.7.0"
 requests = "==2.18.4"
 cymysql = "*"
 email-validator = "*"
+gunicorn = "*"
+gevent = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"
