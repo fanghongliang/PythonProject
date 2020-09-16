@@ -19,18 +19,19 @@ class Book(Base):
     summary = Column(String(1000))
     image = Column(String(50))
 
-    def keys(self):
-        return ['id', 'title', 'author', 'binding',
+    @orm.reconstructor
+    def __init__(self):
+        self.fields = ['id', 'title', 'author', 'binding',
                        'publisher',
                        'price', 'pages', 'pubdate', 'isbn',
                        'summary',
                        'image']
 
-    # @orm.reconstructor
-    # def __init__(self):
-    #     self.fields = ['id', 'title', 'author', 'binding',
-    #                    'publisher',
-    #                    'price','pages', 'pubdate', 'isbn',
-    #                    'summary',
-    #                    'image']
+    def keys(self):
+        return self.fields
+
+    def hide(self, *keys):
+        for key in keys:
+            self.fields.remove(key)
+        return self
 
