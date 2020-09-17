@@ -40,7 +40,8 @@
 
 ### api文档  
 
-正在整理中.....
+文档由于目前是个人试用版，故无法导出为MarkDown格式，这里贴个截图，api接口可在源码中查看  
+[![token333.png](https://i.postimg.cc/D0J3XkFT/token333.png)](https://postimg.cc/K32H6WRq)
 
 ### supplement   
 
