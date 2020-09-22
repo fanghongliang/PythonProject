@@ -1,4 +1,4 @@
-## 基于Python-Flask框架的后台restapi实现  
+## 基于Python-Flask框架的后台restapi实现以及Docker容器化部署
 * author: Fanghl  
 -----  
 后台使用Mysql数据库，ORM使用Sqlalchemy，进行了 token 的发放与验证,严格实现了用户接口访问权限功能以及多端通用性用户注册。针对浏览器环境，处理了跨域请求。对前端来的请求进行了基本的增删改查登录、权限区分等接口，并且已将本地项目部署在云服务器上。最终暴露对外的公网接口可以访问 160.13.4.75：5000/v1/client (post),在client接口注册用户，在 v1/token接口 分发access_token， 将得到的token放置在之后的请求头内即可访问余下的api。   
